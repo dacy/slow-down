@@ -32,13 +32,20 @@ body {
   color: var(--ink);
   font-family:
     "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif SC",
-    "Songti TC", "PingFang SC", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", serif;
+    "Songti TC", -apple-system, BlinkMacSystemFont,
+    "Iowan Old Style", "Apple Garamond", Baskerville, "Times New Roman",
+    "Droid Serif", Times, serif;
   font-size: 17px;
   line-height: 1.75;
   letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html[lang^="en"] body {
+  letter-spacing: 0.005em;
 }
 
 #app {
@@ -51,7 +58,7 @@ body {
 .view {
   width: 100%;
   max-width: 36rem;
-  padding: clamp(2rem, 8vw, 4.5rem) clamp(1.25rem, 5vw, 2rem);
+  padding: clamp(1.5rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 2rem) clamp(1.5rem, 5vw, 3rem);
   display: flex;
   flex-direction: column;
   animation: fade-in 900ms ease-out;
@@ -72,6 +79,8 @@ button {
   border: none;
   cursor: pointer;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button:focus-visible,
@@ -82,34 +91,67 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
-.quiet {
-  color: var(--ink-mute);
-}
+.quiet { color: var(--ink-mute); }
 .small { font-size: 0.86em; line-height: 1.7; }
 .meta {
   color: var(--ink-mute);
   font-size: 0.78em;
   letter-spacing: 0.3em;
-  text-transform: none;
   margin-bottom: 1.6em;
 }
+html[lang^="en"] .meta {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 
-/* ----- 入口 ----- */
+/* ----- Language toggle ----- */
+.lang-toggle {
+  position: absolute;
+  top: clamp(0.75rem, 3vw, 1.5rem);
+  right: clamp(1rem, 4vw, 1.8rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+.lang-toggle button {
+  padding: 0.5rem 0.4rem;
+  min-width: 1.5rem;
+  min-height: 2.2rem;
+  color: var(--ink-mute);
+  transition: color 400ms ease;
+}
+.lang-toggle button[aria-current="true"] { color: var(--ink); }
+@media (hover: hover) {
+  .lang-toggle button:hover { color: var(--ink); }
+}
+
+/* ----- Home ----- */
+.view[data-view="home"] { position: relative; }
 .home-header {
   text-align: center;
-  margin: 2rem 0 3.5rem;
+  margin: clamp(1.5rem, 6vw, 3rem) 0 clamp(2rem, 8vw, 3.5rem);
 }
 .brand {
-  font-size: clamp(3.5rem, 14vw, 5.5rem);
+  font-size: clamp(3.2rem, 13vw, 5.5rem);
   letter-spacing: 0.3em;
   margin-bottom: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+html[lang^="en"] .brand {
+  letter-spacing: 0.04em;
+  font-style: italic;
   font-weight: 400;
 }
 .tagline {
   color: var(--ink-soft);
   font-size: 0.95rem;
   margin: 0 auto;
-  max-width: 22em;
+  max-width: 24em;
+  padding: 0 0.5rem;
 }
 .menu {
   display: flex;
@@ -122,20 +164,27 @@ textarea:focus-visible {
   align-items: baseline;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.5rem 0.25rem;
+  padding: 1.4rem 0.25rem;
+  min-height: 56px;
   border-bottom: 1px solid var(--hairline);
   text-align: left;
   width: 100%;
   transition: padding 600ms ease, background 600ms ease;
 }
-.menu-item:hover {
-  padding-left: 0.75rem;
-  background: linear-gradient(to right, var(--paper-soft), transparent 70%);
+@media (hover: hover) {
+  .menu-item:hover {
+    padding-left: 0.75rem;
+    background: linear-gradient(to right, var(--paper-soft), transparent 70%);
+  }
+}
+.menu-item:active {
+  background: var(--paper-soft);
 }
 .menu-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   letter-spacing: 0.15em;
 }
+html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
 .menu-sub {
   color: var(--ink-mute);
   font-size: 0.88rem;
@@ -144,28 +193,37 @@ textarea:focus-visible {
 }
 .home-foot {
   margin-top: auto;
-  padding-top: 4rem;
+  padding-top: clamp(2rem, 8vw, 4rem);
   text-align: center;
   font-size: 0.85em;
 }
 .home-foot p { margin: 0.3em 0; }
 
-/* ----- 通用：左上离开按钮 ----- */
+/* ----- Leave button (top-left) ----- */
 .leave {
   position: absolute;
-  top: clamp(1rem, 4vw, 1.8rem);
-  left: clamp(1rem, 4vw, 1.8rem);
-  font-size: 1.2rem;
+  top: clamp(0.5rem, 3vw, 1.4rem);
+  left: clamp(0.5rem, 3vw, 1.4rem);
+  font-size: 1.3rem;
   color: var(--ink-mute);
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
+  border-radius: 50%;
   transition: color 400ms ease, transform 400ms ease;
+  z-index: 2;
 }
-.leave:hover {
-  color: var(--ink);
-  transform: translateX(-3px);
+@media (hover: hover) {
+  .leave:hover {
+    color: var(--ink);
+    transform: translateX(-3px);
+  }
 }
+.leave:active { color: var(--ink); }
+
 .view[data-view="sit"],
 .view[data-view="observe"],
 .view[data-view="undo"],
@@ -173,23 +231,24 @@ textarea:focus-visible {
   position: relative;
 }
 
-/* ----- 坐一会 ----- */
+/* ----- Sit ----- */
 .view[data-view="sit"] {
   min-height: 100vh;
   min-height: 100dvh;
   justify-content: center;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 4.5rem 1.5rem 5rem;
 }
 .sit-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: clamp(2rem, 7vw, 3rem);
+  width: 100%;
 }
 .breath {
-  width: min(60vw, 18rem);
-  height: min(60vw, 18rem);
+  width: min(68vw, 18rem);
+  height: min(68vw, 18rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -218,13 +277,15 @@ textarea:focus-visible {
   font-size: 0.9rem;
   letter-spacing: 0.2em;
   margin: 0;
-  transition: opacity 1500ms ease;
+  text-align: center;
+  padding: 0 1rem;
 }
+html[lang^="en"] .breath-hint { letter-spacing: 0.08em; }
 .sit-foot {
   position: absolute;
-  bottom: 2rem;
-  left: 0;
-  right: 0;
+  bottom: clamp(1.5rem, 5vw, 2rem);
+  left: 1rem;
+  right: 1rem;
   text-align: center;
   min-height: 1.5em;
 }
@@ -233,6 +294,7 @@ textarea:focus-visible {
   font-size: 0.86em;
   opacity: 0;
   transition: opacity 2000ms ease;
+  padding: 0 0.5rem;
 }
 #sit-nudge.show { opacity: 1; }
 
@@ -240,19 +302,22 @@ textarea:focus-visible {
   .breath-orb { animation-duration: 22s; }
 }
 
-/* ----- 观察一下 ----- */
+/* ----- Observe / Undo / Read shared layout ----- */
 .observe-wrap, .undo-wrap, .read-wrap {
-  margin-top: 3rem;
+  margin-top: clamp(2rem, 8vw, 3.5rem);
 }
 .prompt {
-  font-size: clamp(1.4rem, 4.5vw, 1.75rem);
+  font-size: clamp(1.3rem, 5vw, 1.75rem);
   line-height: 1.55;
   font-weight: 400;
   color: var(--ink);
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
   letter-spacing: 0.04em;
   min-height: 3em;
+  transition: opacity 600ms ease;
 }
+html[lang^="en"] .prompt { letter-spacing: 0.005em; }
+
 .scratch {
   width: 100%;
   background: transparent;
@@ -260,30 +325,43 @@ textarea:focus-visible {
   border-bottom: 1px solid var(--hairline);
   resize: none;
   font: inherit;
+  font-size: 16px;
   color: var(--ink);
   padding: 0.75rem 0;
   line-height: 1.85;
   margin-bottom: 1.5rem;
   transition: border-color 800ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
 }
 .scratch:focus { border-bottom-color: var(--ink-mute); }
 .scratch::placeholder { color: var(--ink-mute); opacity: 0.6; }
 
 .observe-actions, .read-actions {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1rem, 4vw, 2rem);
   justify-content: flex-end;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 .link {
   color: var(--ink-mute);
   font-size: 0.9rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
+  padding: 0.5rem 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color 500ms ease;
 }
-.link:hover { color: var(--ink); }
+html[lang^="en"] .link { letter-spacing: 0.04em; }
+@media (hover: hover) {
+  .link:hover { color: var(--ink); }
+}
+.link:active { color: var(--ink); }
 
-/* ----- 不做 ----- */
+/* ----- Not-doing ----- */
 .undo-list {
   list-style: none;
   padding: 0;
@@ -291,7 +369,7 @@ textarea:focus-visible {
   min-height: 4rem;
 }
 .undo-list li {
-  padding: 0.8rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px dashed var(--hairline);
   color: var(--ink);
   display: flex;
@@ -300,19 +378,31 @@ textarea:focus-visible {
   gap: 1rem;
   animation: fade-in 700ms ease;
 }
-.undo-list li .text { flex: 1; }
+.undo-list li .text {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
 .undo-list li button {
   color: var(--ink-mute);
-  font-size: 0.8em;
+  font-size: 0.78em;
   letter-spacing: 0.1em;
-  opacity: 0;
-  transition: opacity 400ms ease, color 400ms ease;
+  padding: 0.5rem 0.25rem;
+  min-height: 36px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 400ms ease, opacity 400ms ease;
 }
-.undo-list li:hover button,
-.undo-list li:focus-within button { opacity: 1; }
-.undo-list li button:hover { color: var(--ink); }
-.undo-list:empty::before {
-  content: "（空着也很好）";
+@media (hover: hover) {
+  .undo-list li button {
+    opacity: 0;
+  }
+  .undo-list li:hover button,
+  .undo-list li:focus-within button { opacity: 1; }
+  .undo-list li button:hover { color: var(--ink); }
+}
+.undo-list li button:active { color: var(--ink); }
+.undo-list.is-empty::before {
+  content: attr(data-empty);
   color: var(--ink-mute);
   font-size: 0.9em;
   display: block;
@@ -325,30 +415,45 @@ textarea:focus-visible {
   border: none;
   border-bottom: 1px solid var(--hairline);
   font: inherit;
+  font-size: 16px;
   color: var(--ink);
   padding: 0.6rem 0;
   transition: border-color 800ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
 }
 .undo-add input:focus { border-bottom-color: var(--ink-mute); }
 .undo-add input::placeholder { color: var(--ink-mute); opacity: 0.55; }
 
-/* ----- 念几句 ----- */
+/* ----- Read ----- */
 .passage {
-  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
   line-height: 1.95;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin: 0 0 2rem;
-  padding: 0;
+  padding: 0 0 0 1.25rem;
   color: var(--ink);
   border-left: 2px solid var(--hairline);
-  padding-left: 1.5rem;
   min-height: 6em;
   animation: fade-in 1400ms ease;
 }
+html[lang^="en"] .passage { letter-spacing: 0.005em; }
 .passage.fading { opacity: 0; transition: opacity 600ms ease; }
 
-/* small screens */
+/* ----- Small screens ----- */
 @media (max-width: 480px) {
-  .menu-item { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-  .menu-sub { text-align: left; }
+  body { font-size: 16px; }
+  .menu-item { padding: 1.2rem 0.1rem; }
+  .menu-title { font-size: 1.1rem; }
+  .menu-sub { font-size: 0.82rem; }
+  .observe-actions, .read-actions {
+    justify-content: space-between;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Avoid the iOS-safari address-bar jump from making layout look off */
+@supports (-webkit-touch-callout: none) {
+  .view[data-view="sit"] { min-height: -webkit-fill-available; }
 }
