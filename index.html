@@ -3,108 +3,116 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>慢</title>
-<meta name="description" content="一个不替你提高效率的小练习。" />
+<meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)" />
+<title>慢 · slow</title>
+<meta name="description" content="A small companion that doesn't try to make you more productive." />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <noscript>
   <main class="noscript">
-    <p>这个小东西需要 JavaScript 才能运行。</p>
-    <p>但其实也不一定要打开它。</p>
+    <p>This little thing needs JavaScript to work.</p>
+    <p>But then again, you don't have to open it.</p>
   </main>
 </noscript>
 
 <main id="app" aria-live="polite">
-  <!-- 入口 -->
+  <!-- Home -->
   <section class="view" data-view="home" hidden>
+    <div class="lang-toggle" role="group" aria-label="language">
+      <button type="button" data-lang="zh">中</button>
+      <span aria-hidden="true">·</span>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+
     <header class="home-header">
-      <h1 class="brand">慢</h1>
-      <p class="tagline">不是少做一点事，是少被不重要的东西驱动。</p>
+      <h1 class="brand" data-i18n="brand">慢</h1>
+      <p class="tagline" data-i18n="tagline"></p>
     </header>
 
-    <nav class="menu" aria-label="练习">
-      <button class="menu-item" data-go="sit">
-        <span class="menu-title">坐一会</span>
-        <span class="menu-sub">什么都不做。</span>
+    <nav class="menu" aria-label="practices">
+      <button class="menu-item" type="button" data-go="sit">
+        <span class="menu-title" data-i18n="sitTitle"></span>
+        <span class="menu-sub" data-i18n="sitSub"></span>
       </button>
-      <button class="menu-item" data-go="observe">
-        <span class="menu-title">观察一下</span>
-        <span class="menu-sub">问自己一个问题。</span>
+      <button class="menu-item" type="button" data-go="observe">
+        <span class="menu-title" data-i18n="observeTitle"></span>
+        <span class="menu-sub" data-i18n="observeSub"></span>
       </button>
-      <button class="menu-item" data-go="undo">
-        <span class="menu-title">不做</span>
-        <span class="menu-sub">今天你选择不做的事。</span>
+      <button class="menu-item" type="button" data-go="undo">
+        <span class="menu-title" data-i18n="undoTitle"></span>
+        <span class="menu-sub" data-i18n="undoSub"></span>
       </button>
-      <button class="menu-item" data-go="read">
-        <span class="menu-title">念几句</span>
-        <span class="menu-sub">慢慢读，不必读完。</span>
+      <button class="menu-item" type="button" data-go="read">
+        <span class="menu-title" data-i18n="readTitle"></span>
+        <span class="menu-sub" data-i18n="readSub"></span>
       </button>
     </nav>
 
     <footer class="home-foot">
-      <p class="quiet">这里没有数据、没有打卡、没有提醒。</p>
-      <p class="quiet">用完关掉就好。</p>
+      <p class="quiet" data-i18n="footA"></p>
+      <p class="quiet" data-i18n="footB"></p>
     </footer>
   </section>
 
-  <!-- 坐一会 -->
+  <!-- Sit -->
   <section class="view" data-view="sit" hidden>
-    <button class="leave" data-go="home" aria-label="离开">←</button>
+    <button class="leave" type="button" data-go="home" aria-label="leave">←</button>
     <div class="sit-stage">
       <div class="breath" aria-hidden="true">
         <div class="breath-orb"></div>
       </div>
-      <p class="breath-hint" id="breath-hint">跟着圆呼吸。</p>
+      <p class="breath-hint" id="breath-hint" data-i18n="sitHint"></p>
     </div>
     <div class="sit-foot">
       <p class="quiet" id="sit-nudge"></p>
     </div>
   </section>
 
-  <!-- 观察一下 -->
+  <!-- Observe -->
   <section class="view" data-view="observe" hidden>
-    <button class="leave" data-go="home" aria-label="离开">←</button>
+    <button class="leave" type="button" data-go="home" aria-label="leave">←</button>
     <div class="observe-wrap">
-      <p class="meta">今天的问题</p>
+      <p class="meta" data-i18n="observeMeta"></p>
       <h2 class="prompt" id="prompt-text"></h2>
-      <p class="quiet small">下面写什么都行。也可以什么都不写。<br>这里的字不会被保存。这是一段不必留下痕迹的时间。</p>
-      <textarea class="scratch" id="scratch" rows="10" placeholder="…" autocomplete="off" spellcheck="false"></textarea>
+      <p class="quiet small" id="observe-note"></p>
+      <textarea class="scratch" id="scratch" rows="8" placeholder="…" autocomplete="off" spellcheck="false"></textarea>
       <div class="observe-actions">
-        <button class="link" id="another-prompt">换一个问题</button>
-        <button class="link" data-go="home">关掉</button>
+        <button class="link" type="button" id="another-prompt" data-i18n="observeAnother"></button>
+        <button class="link" type="button" data-go="home" data-i18n="observeClose"></button>
       </div>
     </div>
   </section>
 
-  <!-- 不做 -->
+  <!-- Not-doing -->
   <section class="view" data-view="undo" hidden>
-    <button class="leave" data-go="home" aria-label="离开">←</button>
+    <button class="leave" type="button" data-go="home" aria-label="leave">←</button>
     <div class="undo-wrap">
-      <p class="meta">今天我选择不做</p>
-      <ul class="undo-list" id="undo-list" aria-label="不做清单"></ul>
+      <p class="meta" data-i18n="undoMeta"></p>
+      <ul class="undo-list" id="undo-list" aria-label="not-doing list"></ul>
       <form class="undo-add" id="undo-form">
         <input
           type="text"
           id="undo-input"
-          placeholder="比如：不必把今天的散步变成一篇文章。"
           maxlength="140"
           autocomplete="off"
+          enterkeyhint="done"
         />
       </form>
-      <p class="quiet small">明天起床时，这个清单会清空。<br>它不为你积累什么。</p>
+      <p class="quiet small" id="undo-note"></p>
     </div>
   </section>
 
-  <!-- 念几句 -->
+  <!-- Read -->
   <section class="view" data-view="read" hidden>
-    <button class="leave" data-go="home" aria-label="离开">←</button>
+    <button class="leave" type="button" data-go="home" aria-label="leave">←</button>
     <div class="read-wrap">
       <p class="meta" id="read-meta"></p>
       <blockquote class="passage" id="passage"></blockquote>
       <div class="read-actions">
-        <button class="link" id="read-next">下一段</button>
-        <button class="link" data-go="home">够了</button>
+        <button class="link" type="button" id="read-next" data-i18n="readNext"></button>
+        <button class="link" type="button" data-go="home" data-i18n="readEnough"></button>
       </div>
     </div>
   </section>
