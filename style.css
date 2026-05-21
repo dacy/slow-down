@@ -70,6 +70,7 @@ html[lang^="en"] body {
   flex-direction: column;
   animation: fade-in 900ms ease-out;
 }
+.view[hidden] { display: none; }
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(6px); }
