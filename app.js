@@ -438,4 +438,10 @@
   // ---------- Boot ----------
   applyLang();
   show(initialView());
+
+  // Handle browser back/forward and direct hash navigation.
+  window.addEventListener("hashchange", () => {
+    const next = initialView();
+    if (next !== currentView) show(next);
+  });
 })();
