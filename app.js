@@ -22,10 +22,12 @@
 
       sitHint: "跟着圆呼吸。",
       sitNudges: [
-        { atMs: 90 * 1000,  text: "在这里就好。不必赶着回到什么地方。" },
-        { atMs: 240 * 1000, text: "如果心里冒出「该做点别的」的念头，看看它，然后让它走。" },
-        { atMs: 480 * 1000, text: "够了。可以关掉这个页面了。" },
-        { atMs: 720 * 1000, text: "真的够了。这里没有更多东西在等你。" }
+        { atMs:  90 * 1000, text: "在这里就好。不必赶着回到什么地方。" },
+        { atMs: 240 * 1000, text: "外面的人正在赶路。你可以让他们赶。" },
+        { atMs: 420 * 1000, text: "如果心里冒出「该做点别的」的念头，看看它，然后让它走。" },
+        { atMs: 600 * 1000, text: "你正在「落后」——可那只是另一种站着的方式。" },
+        { atMs: 780 * 1000, text: "够了。可以关掉这个页面了。" },
+        { atMs: 960 * 1000, text: "真的够了。这里没有更多东西在等你。" }
       ],
 
       observeMeta: "今天的问题",
@@ -171,10 +173,12 @@
 
       sitHint: "Breathe with the circle.",
       sitNudges: [
-        { atMs: 90 * 1000,  text: "It's enough to just be here. You don't need to get anywhere." },
-        { atMs: 240 * 1000, text: "If a thought like 'I should be doing something else' shows up — see it, then let it pass." },
-        { atMs: 480 * 1000, text: "That's enough. You can close this tab now." },
-        { atMs: 720 * 1000, text: "Really, enough. Nothing more is waiting here for you." }
+        { atMs:  90 * 1000, text: "It's enough to just be here. You don't need to get anywhere." },
+        { atMs: 240 * 1000, text: "Out there, people are rushing. You can let them rush." },
+        { atMs: 420 * 1000, text: "If a thought like 'I should be doing something else' shows up — see it, then let it pass." },
+        { atMs: 600 * 1000, text: "You are 'falling behind' right now — but that's only another way of standing still." },
+        { atMs: 780 * 1000, text: "That's enough. You can close this tab now." },
+        { atMs: 960 * 1000, text: "Really, enough. Nothing more is waiting here for you." }
       ],
 
       observeMeta: "Today's question",
@@ -567,6 +571,10 @@
   // ---------- Enough (permission slips) ----------
 
   let slipIdx = -1;
+  // Slight per-slip rotation gives the cards a hand-placed feel rather than
+  // a stamped-out-of-a-template feel. Eight values, picked deterministically
+  // by slip index.
+  const SLIP_ROTATIONS = ["-0.6deg", "0.5deg", "-0.4deg", "0.7deg", "-0.7deg", "0.3deg", "-0.5deg", "0.6deg"];
   function showSlip(forceRandom) {
     const slip = document.getElementById("slip");
     const text = document.getElementById("slip-text");
@@ -580,15 +588,14 @@
     }
     slipIdx = nextIdx;
 
+    slip.style.setProperty("--slip-rot", SLIP_ROTATIONS[slipIdx % SLIP_ROTATIONS.length]);
+    // Re-trigger the settling animation by toggling the class off and on.
     slip.classList.remove("settled");
     slip.classList.add("fading");
     setTimeout(() => {
       text.textContent = list[slipIdx];
       slip.classList.remove("fading");
-      // Tiny delay before "settling" so the stamp lands after the slip appears.
-      requestAnimationFrame(() => {
-        setTimeout(() => slip.classList.add("settled"), 80);
-      });
+      slip.classList.add("settled");
     }, 500);
   }
   function setupEnough() {
