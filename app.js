@@ -13,6 +13,7 @@
       observeTitle: "观察一下", observeSub: "问自己一个问题。",
       undoTitle: "不做",       undoSub: "今天你选择不做的事。",
       readTitle: "念几句",     readSub: "慢慢读，不必读完。",
+      enoughTitle: "够了",     enoughSub: "今天的一张许可证。",
 
       footA: "这里没有数据、没有打卡、没有提醒。",
       footB: "用完关掉就好。",
@@ -41,6 +42,11 @@
 
       readNext: "下一段",
       readEnough: "够了",
+
+      enoughMeta: "今日许可",
+      enoughAnother: "换一张",
+      enoughClose: "收下了",
+      enoughNote: "这张许可证不会被保存，也无需被保存。读一遍，记不记得，都没关系。",
 
       prompts: [
         "今天你给了多少时间，是没有目的的？",
@@ -100,6 +106,40 @@
         { tag: "韩炳哲", text: "我们已经不再需要别人来剥削自己——最严厉的那个工头，已经搬进了我们脑子里。" },
         { tag: "皮科·艾耶", text: "在一个加速度的世界里，慢下来不再是一种特权。它越来越像一种必需。" },
         { tag: "伯克曼", text: "一辈子大约只有四千个星期。承认这件事让人窒息，但也让人解脱：既然不可能什么都做，那你终于可以选了。" }
+      ],
+
+      slips: [
+        "今天，你可以做一个普通人。普通本来就是大多数。",
+        "今天，你不必赢。让一次也没关系——本来也没有奖。",
+        "今天，你可以是慢的那一个。慢，不是问题；急，才是。",
+        "今天，你可以不被看见。不被看见的时候，你才真正地在场。",
+        "今天，你的存在不需要任何理由。你已经在这里了。",
+        "今天，你不必比昨天更好。昨天的你，已经替你走完了昨天。",
+        "今天，你可以不证明任何事。证明，是给评审看的，不是给自己活的。",
+        "今天，你可以不知道答案。也可以不知道问题是什么。",
+        "今天，落在别人后面是可以的。你不在他们的路上。",
+        "今天，你不必有一份「了不起」的人生。普通的，已经够珍贵了。",
+        "今天，你不必让自己有用。无用的木头，活到了它本该有的年岁。",
+        "你已经够了。即便此刻什么也没做。",
+        "你的休息不欠任何人一个解释。",
+        "今天，你可以不去成为一个「更好的版本」。这个版本，已经把你扛到了这里。",
+        "今天，你可以让别人先到达。终点不只一个；也不一定要有终点。",
+        "你今天没产出，世界也没在等你产出。",
+        "今天，你不必「成为」任何人。你已经是了。",
+        "今天，你不需要被理解。被理解不是活着的前提。",
+        "今天，你可以让心里那个「应该」安静一下。它已经吵了太久。",
+        "你不必是最强、最快、最忙的那一个。本来也没人发奖牌。",
+        "今天，你的「够」，不由别人来定。",
+        "今天，你可以承认你累了。承认，本身就是一种休息。",
+        "今天，你可以爱你平凡的样子——那才是真的你。",
+        "你今天的存在，本身就是一份贡献。哪怕没有人收到。",
+        "今天，你不必「赶上」任何人。这不是一场比赛，从来都不是。",
+        "今天，你可以做完一半就停下。半，也是一种完整。",
+        "今天，你可以让自己被打败。这不是失败，这是放下。",
+        "今天，你可以让那条没回的消息再等等。没人会因此少一寸生命。",
+        "今天，你可以不优秀。优秀，也是一种忙。",
+        "在某个角落不被知道，也是一种好好活着的方式。",
+        "今天，你可以放心地，被这个世界遗忘几个小时。"
       ]
     },
 
@@ -112,6 +152,7 @@
       observeTitle: "Notice",   observeSub: "Ask yourself something.",
       undoTitle: "Not-doing",   undoSub: "What you're choosing not to do today.",
       readTitle: "Read a line", readSub: "Slowly. You don't have to finish.",
+      enoughTitle: "It's enough", enoughSub: "A small permission for today.",
 
       footA: "No data, no streaks, no notifications.",
       footB: "Close it when you're done.",
@@ -140,6 +181,11 @@
 
       readNext: "next",
       readEnough: "enough",
+
+      enoughMeta: "today's permission",
+      enoughAnother: "another",
+      enoughClose: "I'll take it",
+      enoughNote: "This permission slip isn't saved, and doesn't need to be. Read it once. Remembering it isn't required.",
 
       prompts: [
         "How much of today did you give to nothing in particular?",
@@ -199,6 +245,40 @@
         { tag: "Pico Iyer",       text: "In an age of acceleration, going slow has stopped being a privilege. It is becoming a necessity." },
         { tag: "Burkeman",        text: "A human lifespan is around four thousand weeks. Admitting this feels suffocating — and then, surprisingly, freeing. You cannot do everything, which is why you finally get to choose." },
         { tag: "Russell",         text: "Immense harm is caused by the belief that work is virtuous. The road to a sane life lies in an organized diminution of work." }
+      ],
+
+      slips: [
+        "Today, you have permission to be ordinary. Ordinary is, after all, what most of us are.",
+        "Today, you don't have to win. Letting someone go ahead is fine — there was no prize anyway.",
+        "Today, you can be the slow one. Slow isn't the problem. Hurry is.",
+        "Today, you can go unseen. Unseen is when you actually get to be here.",
+        "Today, your existence doesn't need a reason. You are already here.",
+        "Today, you don't have to be better than yesterday. Yesterday-you walked yesterday's miles already.",
+        "Today, you don't have to prove anything. Proof is for an audience you don't owe.",
+        "Today, you can not know the answer. You can also not know the question.",
+        "Today, it's okay to be behind everyone. You are not on their road.",
+        "Today, you don't have to have a remarkable life. An ordinary one is already rare.",
+        "Today, you don't have to make yourself useful. The crooked tree, useless to the carpenter, lived out its full years.",
+        "You are already enough. Even right now, having done nothing.",
+        "Your rest owes no one an explanation.",
+        "Today, you don't have to become a 'better version' of yourself. This version got you here.",
+        "Today, you can let others arrive first. There isn't only one finish line. There may be none at all.",
+        "You produced nothing today. The world was not waiting for you to.",
+        "Today, you don't have to 'become' anyone. You already are.",
+        "Today, you don't need to be understood. Being understood is not a prerequisite for being alive.",
+        "Today, you can let the 'should' inside you go quiet. It has been loud for a long time.",
+        "You don't have to be the strongest, fastest, busiest one. No one was handing out medals.",
+        "Today, what's 'enough' for you is not for anyone else to decide.",
+        "Today, you can admit you are tired. Admitting is itself a kind of rest.",
+        "Today, you can love your ordinary self. That's the real one.",
+        "Your being here today is itself a contribution. Even if no one receives it.",
+        "Today, you don't have to catch up to anyone. This was never a race.",
+        "Today, you can stop halfway. Half is also a kind of whole.",
+        "Today, you can let yourself be defeated. That isn't failure. It's letting go.",
+        "Today, that unanswered message can keep waiting. No one loses an hour of life because of it.",
+        "Today, you don't have to be excellent. Excellence is also a kind of busyness.",
+        "Being unknown in some quiet corner is also a way of living a good life.",
+        "Today, you can let the world forget about you for a few hours. It's allowed."
       ]
     }
   };
@@ -225,6 +305,7 @@
     // Reset content tied to language
     promptShownKey = null;
     readIdx = -1;
+    slipIdx = -1;
     const ta = document.getElementById("scratch");
     if (ta) ta.value = "";
     // Re-run current view to refresh dynamic strings
@@ -310,7 +391,7 @@
 
   function initialView() {
     const h = (location.hash || "").replace("#", "");
-    const valid = ["sit", "observe", "undo", "read"];
+    const valid = ["sit", "observe", "undo", "read", "enough"];
     return valid.includes(h) ? h : "home";
   }
 
@@ -463,6 +544,39 @@
     if (readIdx === -1) nextPassage();
   }
 
+  // ---------- Enough (permission slips) ----------
+
+  let slipIdx = -1;
+  function showSlip(forceRandom) {
+    const slip = document.getElementById("slip");
+    const text = document.getElementById("slip-text");
+    const list = t.slips;
+    let nextIdx;
+    if (forceRandom) {
+      do { nextIdx = Math.floor(Math.random() * list.length); }
+      while (nextIdx === slipIdx && list.length > 1);
+    } else {
+      nextIdx = hashOfDay() % list.length;
+    }
+    slipIdx = nextIdx;
+
+    slip.classList.remove("settled");
+    slip.classList.add("fading");
+    setTimeout(() => {
+      text.textContent = list[slipIdx];
+      slip.classList.remove("fading");
+      // Tiny delay before "settling" so the stamp lands after the slip appears.
+      requestAnimationFrame(() => {
+        setTimeout(() => slip.classList.add("settled"), 80);
+      });
+    }, 500);
+  }
+  function setupEnough() {
+    document.getElementById("enough-next").onclick = () => showSlip(true);
+    const note = document.getElementById("enough-note");
+    if (note) note.textContent = t.enoughNote;
+  }
+
   // ---------- View lifecycle ----------
 
   function onEnter(name) {
@@ -476,6 +590,12 @@
     if (name === "read") {
       // Force a fresh passage when language changes; otherwise just keep showing.
       setupRead();
+    }
+    if (name === "enough") {
+      setupEnough();
+      // First visit of the day shows today's slip; revisits keep what's there
+      // unless the user taps "another".
+      if (slipIdx === -1) showSlip(false);
     }
   }
 

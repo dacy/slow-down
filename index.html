@@ -48,6 +48,10 @@
         <span class="menu-title" data-i18n="readTitle"></span>
         <span class="menu-sub" data-i18n="readSub"></span>
       </button>
+      <button class="menu-item" type="button" data-go="enough">
+        <span class="menu-title" data-i18n="enoughTitle"></span>
+        <span class="menu-sub" data-i18n="enoughSub"></span>
+      </button>
     </nav>
 
     <footer class="home-foot">
@@ -101,6 +105,23 @@
         />
       </form>
       <p class="quiet small" id="undo-note"></p>
+    </div>
+  </section>
+
+  <!-- Enough -->
+  <section class="view" data-view="enough" hidden>
+    <button class="leave" type="button" data-go="home" aria-label="leave">←</button>
+    <div class="enough-wrap">
+      <p class="meta" data-i18n="enoughMeta"></p>
+      <article class="slip" id="slip" aria-live="polite">
+        <span class="slip-seal" aria-hidden="true"></span>
+        <p class="slip-text" id="slip-text"></p>
+      </article>
+      <div class="enough-actions">
+        <button class="link" type="button" id="enough-next" data-i18n="enoughAnother"></button>
+        <button class="link" type="button" data-go="home" data-i18n="enoughClose"></button>
+      </div>
+      <p class="quiet small enough-note" id="enough-note"></p>
     </div>
   </section>
 
