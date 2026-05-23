@@ -78,7 +78,13 @@
         "如果没有人在看，你现在最想做什么？",
         "今天有没有一刻，你只是单纯地在那里，而不是在赶往哪里？",
         "你最近一次坐下来什么都不看——连手机也不看——是多久之前？",
-        "如果不是「为以后」的话，你今天会怎么过？"
+        "如果不是「为以后」的话，你今天会怎么过？",
+        "今天你和谁较了一下劲？较出了什么？",
+        "你以为自己「落后」了——落在了什么的后面？是谁划的那条线？",
+        "你最近一次因为别人比你「更好」而难受，是为了证明给谁看？",
+        "那个让你觉得自己「不够」的人，他自己「够」了吗？",
+        "你最近一次被「忽视」，是不是其实就是一段没人盯着你的安静？",
+        "如果今天没有人比较、没有人评分，你会先去做什么？"
       ],
 
       passages: [
@@ -105,7 +111,11 @@
         { tag: "黑塞", text: "悉达多被问：你会什么？他答：我能等待，我能思考，我能斋戒。——这三件事，足以让一个人不被这个世界拉着跑。" },
         { tag: "韩炳哲", text: "我们已经不再需要别人来剥削自己——最严厉的那个工头，已经搬进了我们脑子里。" },
         { tag: "皮科·艾耶", text: "在一个加速度的世界里，慢下来不再是一种特权。它越来越像一种必需。" },
-        { tag: "伯克曼", text: "一辈子大约只有四千个星期。承认这件事让人窒息，但也让人解脱：既然不可能什么都做，那你终于可以选了。" }
+        { tag: "伯克曼", text: "一辈子大约只有四千个星期。承认这件事让人窒息，但也让人解脱：既然不可能什么都做，那你终于可以选了。" },
+        { tag: "庄子", text: "鹪鹩巢于深林，不过一枝；偃鼠饮河，不过满腹。所谓「够」，自古就没有很大。" },
+        { tag: "庄子", text: "井蛙不可以语于海。但井蛙的井，对它来说，也是它的整个世界。每个人的「够」，原本就不一样。" },
+        { tag: "禅家语", text: "比较是一切痛苦的开始。山不和山比高，海不和海比深。它们只是各自地，是它们自己。" },
+        { tag: "本居宣长", text: "「物の哀れ」——能为一片落叶动心的人，并不比那些「成就大业」的人少活了什么。" }
       ],
 
       slips: [
@@ -217,7 +227,13 @@
         "If no one were watching, what would you most want to do right now?",
         "Was there a moment today when you were just there, not on your way somewhere?",
         "When did you last sit and look at nothing — not even a screen?",
-        "If you weren't doing it 'for later', how would today look?"
+        "If you weren't doing it 'for later', how would today look?",
+        "Who were you measuring yourself against today? What came of it?",
+        "You think you're 'behind' — behind what, exactly? Who drew the line?",
+        "When you most recently felt small because someone else was 'doing better,' who were you trying to prove yourself to?",
+        "That person whose life makes you feel inadequate — do they feel adequate?",
+        "That recent moment when you felt 'ignored' — what if it was just a stretch of quiet when no one was watching you?",
+        "If no one were comparing or scoring today, what would you do first?"
       ],
 
       passages: [
@@ -244,7 +260,11 @@
         { tag: "Byung-Chul Han",  text: "We no longer need external exploiters. The most demanding foreman has moved into our own heads." },
         { tag: "Pico Iyer",       text: "In an age of acceleration, going slow has stopped being a privilege. It is becoming a necessity." },
         { tag: "Burkeman",        text: "A human lifespan is around four thousand weeks. Admitting this feels suffocating — and then, surprisingly, freeing. You cannot do everything, which is why you finally get to choose." },
-        { tag: "Russell",         text: "Immense harm is caused by the belief that work is virtuous. The road to a sane life lies in an organized diminution of work." }
+        { tag: "Russell",         text: "Immense harm is caused by the belief that work is virtuous. The road to a sane life lies in an organized diminution of work." },
+        { tag: "Zhuangzi",        text: "The wren in the deepest woods needs only a single branch. The mole drinking at the river drinks only its fill. 'Enough' has never been very large." },
+        { tag: "Zhuangzi",        text: "You can't tell a frog in a well about the sea — it is bound by its space. But to the frog, its well is its whole world. What is 'enough' was never meant to be the same for everyone." },
+        { tag: "Zen saying",      text: "Comparison is where all suffering begins. Mountains do not compete with mountains for height. Seas do not compete with seas for depth. They simply, each in their own place, are what they are." },
+        { tag: "Motoori Norinaga", text: "Mono no aware — the one who can be moved by a falling leaf has not lived any less than the one who 'accomplished great things.'" }
       ],
 
       slips: [
