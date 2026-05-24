@@ -45,6 +45,7 @@
       observeNote: "下面写什么都行。也可以什么都不写。这里的字不会被保存。这是一段不必留下痕迹的时间。",
       scratchPlaceholder: "…",
       observeAnother: "换一个问题",
+      observeLetGo: "放掉它",
       observeClose: "关掉",
 
       undoMeta: "今天我选择不做",
@@ -176,7 +177,13 @@
         "今天，你可以不在乎自己的「形象」。形象是给别人看的，今天不开门。",
         "今天，你可以「无所成就」。今天本来就不是为了被记住的。",
         "今天，你可以反悔。昨天答应自己的话，今天可以重新看一遍。",
-        "今天，你可以「不够」——并且就这样过完这一天，也没事。"
+        "今天，你可以「不够」——并且就这样过完这一天，也没事。",
+        "今天，你可以对一件事不发表意见。沉默不是怯懦，是节约。",
+        "今天，你的身体说累，就让它累。它对你诚实，请你也对它诚实。",
+        "今天，你可以被人看见你不在状态。这一面，也是你的全貌的一部分。",
+        "如果有一天你变老、变慢、跟不上——那也只是另一种活着。提前一点接受。",
+        "今天，你可以放过自己的某一个错。它已经过了。",
+        "今天，你不必把自己的人生「讲成一个故事」。它就这样发生着，已经在了。"
       ]
     },
 
@@ -221,6 +228,7 @@
       observeNote: "Write whatever, or nothing at all. Nothing here is saved. This is a stretch of time that doesn't need to leave a trace.",
       scratchPlaceholder: "…",
       observeAnother: "another question",
+      observeLetGo: "let it go",
       observeClose: "close",
 
       undoMeta: "Today I am choosing not to",
@@ -352,7 +360,13 @@
         "Today, you can stop curating your 'image.' Image is for others. The door is closed today.",
         "Today, you can have 'accomplished nothing.' Today wasn't meant to be remembered.",
         "Today, you can change your mind. What you promised yourself yesterday can be looked at again.",
-        "Today, you can be 'not enough' — and live the whole day like that, and it will still have been a day."
+        "Today, you can be 'not enough' — and live the whole day like that, and it will still have been a day.",
+        "Today, you can have no opinion on something. Silence isn't cowardice. It's conservation.",
+        "Today, when your body says 'tired,' let it be tired. It is honest with you. Try to be honest with it.",
+        "Today, you can let someone see you off your game. That side of you is also part of the whole picture.",
+        "Someday you will get older, slower, less able to keep up. That, too, is only another way of being alive. You can start letting that be okay early.",
+        "Today, you can let yourself off the hook for one mistake. It has already passed.",
+        "Today, you don't have to tell your life as a story. It is happening already, story or no."
       ]
     }
   };
@@ -542,8 +556,22 @@
   }
   function setupObserve() {
     document.getElementById("another-prompt").onclick = () => loadPrompt(true);
+    document.getElementById("let-go").onclick = letGo;
     // Reset scratch on entry — content is never saved.
-    document.getElementById("scratch").value = "";
+    const ta = document.getElementById("scratch");
+    ta.value = "";
+    ta.classList.remove("releasing");
+  }
+  function letGo() {
+    const ta = document.getElementById("scratch");
+    if (!ta.value.trim()) return;
+    ta.classList.add("releasing");
+    // After the drift-down completes, quietly clear and restore the textarea
+    // so the user can write something else.
+    setTimeout(() => {
+      ta.value = "";
+      ta.classList.remove("releasing");
+    }, 1800);
   }
 
   // ---------- Not-doing ----------

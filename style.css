@@ -366,6 +366,13 @@ html[lang^="en"] .prompt { letter-spacing: 0.005em; }
 }
 .scratch:focus { border-bottom-color: var(--ink-mute); }
 .scratch::placeholder { color: var(--ink-mute); opacity: 0.6; }
+.scratch.releasing {
+  /* Lets the writing drift down and fade — a small ritual of release. */
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: transform 1700ms cubic-bezier(0.4, 0.1, 0.3, 1), opacity 1700ms ease-in;
+  pointer-events: none;
+}
 
 .observe-actions, .read-actions {
   display: flex;
