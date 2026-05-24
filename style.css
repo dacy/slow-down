@@ -203,6 +203,15 @@ html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
   text-align: right;
   flex-shrink: 1;
 }
+.time-note {
+  margin: 0 0 1.5rem !important;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+.time-note:empty { display: none; }
+
 .home-foot {
   margin-top: auto;
   padding-top: clamp(2rem, 8vw, 4rem);
@@ -210,6 +219,80 @@ html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
   font-size: 0.85em;
 }
 .home-foot p { margin: 0.3em 0; }
+
+.foot-affirm {
+  margin-top: 1.2rem !important;
+}
+.foot-affirm .link {
+  color: var(--ink-mute);
+  font-size: 0.86em;
+  letter-spacing: 0.16em;
+  font-style: italic;
+  padding: 0.5rem 0.75rem;
+  min-height: 36px;
+  border-radius: 999px;
+  transition: color 500ms ease, background 600ms ease;
+}
+html[lang^="en"] .foot-affirm .link { letter-spacing: 0.06em; }
+@media (hover: hover) {
+  .foot-affirm .link:hover {
+    color: var(--ink);
+    background: var(--paper-soft);
+  }
+}
+.foot-affirm .link:active {
+  color: var(--ink);
+  background: var(--paper-soft);
+}
+
+/* ----- Affirmation overlay ----- */
+.affirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 900ms ease;
+}
+.affirm-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.affirm-content {
+  text-align: center;
+  padding: 2rem clamp(1.5rem, 6vw, 3rem);
+  max-width: 32rem;
+}
+.affirm-line {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin: 0.4em 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 1500ms ease, transform 1500ms ease;
+}
+html[lang^="en"] .affirm-line { letter-spacing: 0.01em; }
+.affirm-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.affirm-line[data-line="0"] { font-weight: 500; }
+.affirm-line[data-line="1"],
+.affirm-line[data-line="2"] {
+  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affirm-overlay,
+  .affirm-line { transition-duration: 200ms; }
+}
 
 /* ----- Leave button (top-left) ----- */
 .leave {
@@ -239,7 +322,8 @@ html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
 .view[data-view="sit"],
 .view[data-view="observe"],
 .view[data-view="undo"],
-.view[data-view="read"] {
+.view[data-view="read"],
+.view[data-view="enough"] {
   position: relative;
 }
 
@@ -357,6 +441,27 @@ html[lang^="en"] .prompt { letter-spacing: 0.005em; }
 }
 .scratch:focus { border-bottom-color: var(--ink-mute); }
 .scratch::placeholder { color: var(--ink-mute); opacity: 0.6; }
+.scratch.releasing {
+  /* Lets the writing drift down and fade — a small ritual of release. */
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: transform 1700ms cubic-bezier(0.4, 0.1, 0.3, 1), opacity 1700ms ease-in;
+  pointer-events: none;
+}
+
+/* 'let it go' is hidden until the scratch has something to release. */
+#let-go {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2px);
+  transition: opacity 500ms ease, transform 500ms ease, visibility 0s linear 500ms;
+}
+#let-go.has-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 500ms ease, transform 500ms ease, visibility 0s;
+}
 
 .observe-actions, .read-actions {
   display: flex;
@@ -446,10 +551,154 @@ html[lang^="en"] .link { letter-spacing: 0.04em; }
 .undo-add input:focus { border-bottom-color: var(--ink-mute); }
 .undo-add input::placeholder { color: var(--ink-mute); opacity: 0.55; }
 
+/* ----- Enough (permission slips) ----- */
+.enough-wrap {
+  margin-top: clamp(2rem, 8vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.slip {
+  position: relative;
+  background: var(--paper-soft);
+  border: 1px solid var(--hairline);
+  padding: clamp(2rem, 7vw, 3rem) clamp(1.5rem, 6vw, 2.5rem);
+  margin: 0.25rem 0 2rem;
+  min-height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow:
+    0 1px 0 var(--hairline),
+    0 18px 40px -28px rgba(0, 0, 0, 0.18);
+  transition: opacity 600ms ease, transform 900ms cubic-bezier(0.2, 0.8, 0.3, 1.1);
+  opacity: 1;
+  /* Slight per-slip rotation — set by JS via --slip-rot. */
+  transform: translateY(0) rotate(var(--slip-rot, 0deg));
+  overflow: hidden;
+}
+.slip.fading {
+  opacity: 0;
+  transform: translateY(6px) rotate(var(--slip-rot, 0deg));
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.slip::before {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.slip-text {
+  font-size: clamp(1.1rem, 4.3vw, 1.4rem);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin: 0;
+  max-width: 28em;
+  overflow-wrap: break-word;
+  /* Slip texts are short and crafted — let them wrap on word boundaries.
+     Auto-hyphenation breaks words like "reason" into "rea-/son", which
+     then looks visually off-centre next to the seal in the corner. */
+  hyphens: manual;
+}
+html[lang^="en"] .slip-text { letter-spacing: 0.005em; }
+
+/* A small, red seal that lands in the lower-right of the slip after a beat. */
+.slip-seal {
+  position: absolute;
+  right: clamp(1rem, 4vw, 1.5rem);
+  bottom: clamp(0.9rem, 3.5vw, 1.4rem);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1.5px solid #a14a3a;
+  color: #a14a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Songti SC", "STSong", "Source Han Serif SC", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  opacity: 0;
+  transform: rotate(-6deg) scale(0.7);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    rgba(161, 74, 58, 0.04);
+  /* slightly rough edges via inset shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(161, 74, 58, 0.15),
+    0 0 0 0.5px rgba(161, 74, 58, 0.12);
+}
+.slip-seal::after {
+  content: "许";
+  display: block;
+  line-height: 1;
+}
+html[lang^="en"] .slip-seal::after {
+  content: "ok";
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+.slip.settled .slip-seal {
+  opacity: 0.9;
+  transform: rotate(-6deg) scale(1);
+}
+@media (prefers-color-scheme: dark) {
+  .slip-seal {
+    border-color: #d88671;
+    color: #d88671;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+      rgba(216, 134, 113, 0.06);
+    box-shadow:
+      inset 0 0 0 1px rgba(216, 134, 113, 0.15),
+      0 0 0 0.5px rgba(216, 134, 113, 0.12);
+  }
+  .slip {
+    box-shadow:
+      0 1px 0 var(--hairline),
+      0 18px 40px -28px rgba(0, 0, 0, 0.55);
+  }
+}
+.enough-actions {
+  display: flex;
+  gap: clamp(1rem, 4vw, 2rem);
+  justify-content: flex-end;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  transition: opacity 1400ms ease;
+}
+/* While the slip is arriving, soften the action links so the eye stays on
+   the slip itself for a few breaths. They remain clickable. */
+.enough-actions.settling { opacity: 0.45; }
+.enough-note {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 540px) {
+  .enough-actions {
+    justify-content: space-between;
+    margin-top: 0.25rem;
+  }
+  .slip {
+    min-height: 8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slip, .slip-seal { transition-duration: 0ms; }
+}
+
 /* ----- Read ----- */
 .passage {
-  font-size: clamp(1.05rem, 4vw, 1.3rem);
-  line-height: 1.95;
+  font-size: clamp(1.1rem, 4.3vw, 1.4rem);
+  line-height: 1.85;
   letter-spacing: 0.04em;
   margin: 0 0 2rem;
   padding: 0 0 0 1.25rem;
@@ -466,24 +715,51 @@ html[lang^="en"] .passage { letter-spacing: 0.005em; }
 
 /* ----- Small screens ----- */
 @media (max-width: 540px) {
-  body { font-size: 16px; }
+  body { font-size: 16.5px; line-height: 1.72; }
+  /* English carries less visual weight per character than Chinese at the same
+     size, so it gets a small additional bump on mobile for comfortable reading. */
+  html[lang^="en"] body { font-size: 17px; }
+
   .menu-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
-    padding: 1.15rem 0.1rem;
+    gap: 0.45rem;
+    padding: 1.25rem 0.1rem;
   }
-  .menu-title { font-size: 1.1rem; }
+  .menu-title { font-size: 1.15rem; }
   .menu-sub {
     text-align: left;
-    font-size: 0.82rem;
+    font-size: 0.95rem;        /* was 0.82rem — too small at iPhone widths */
   }
+
+  /* Meta labels (TODAY'S QUESTION / 今日许可 / RILKE) were stacking down to ~12px.
+     Hold them at ~14px so the hierarchy reads. */
+  .meta { font-size: 0.86em; letter-spacing: 0.22em; }
+  html[lang^="en"] .meta { letter-spacing: 0.18em; }
+
+  /* The footer used to be 0.85em and its children added more em-reductions on top,
+     so the time-note and 'say it once' link compounded down to ~12px. Hold the
+     footer at a single, comfortable size and don't reduce its children further. */
+  .home-foot { font-size: 0.95em; }
+  .home-foot .small,
+  .home-foot .quiet.small { font-size: 1em; }
+  .foot-affirm .link { font-size: 0.95em; }
+
+  /* Standalone secondary text — disclaimers under prompts, etc. */
+  .small { font-size: 0.92em; }
+
+  /* Reading content uses the same clamp as the slip — see base rules. */
+  .scratch { font-size: 17px; }
+
+  /* Action links should be tappable and readable. */
+  .link { font-size: 0.96rem; }
+
   .observe-actions, .read-actions {
     justify-content: space-between;
     margin-top: 0.25rem;
   }
   .home-header { margin-top: 3rem; }
-  .lang-toggle { font-size: 0.8rem; }
+  .lang-toggle { font-size: 0.85rem; }
 }
 
 @media (max-width: 360px) {
