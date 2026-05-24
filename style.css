@@ -322,7 +322,8 @@ html[lang^="en"] .affirm-line { letter-spacing: 0.01em; }
 .view[data-view="sit"],
 .view[data-view="observe"],
 .view[data-view="undo"],
-.view[data-view="read"] {
+.view[data-view="read"],
+.view[data-view="enough"] {
   position: relative;
 }
 
