@@ -204,7 +204,7 @@ html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
   flex-shrink: 1;
 }
 .time-note {
-  margin: clamp(2rem, 6vw, 2.75rem) 0 0;
+  margin: 0 0 1.5rem !important;
   text-align: center;
   font-style: italic;
   letter-spacing: 0.01em;
@@ -219,6 +219,80 @@ html[lang^="en"] .menu-title { letter-spacing: 0.05em; }
   font-size: 0.85em;
 }
 .home-foot p { margin: 0.3em 0; }
+
+.foot-affirm {
+  margin-top: 1.2rem !important;
+}
+.foot-affirm .link {
+  color: var(--ink-mute);
+  font-size: 0.86em;
+  letter-spacing: 0.16em;
+  font-style: italic;
+  padding: 0.5rem 0.75rem;
+  min-height: 36px;
+  border-radius: 999px;
+  transition: color 500ms ease, background 600ms ease;
+}
+html[lang^="en"] .foot-affirm .link { letter-spacing: 0.06em; }
+@media (hover: hover) {
+  .foot-affirm .link:hover {
+    color: var(--ink);
+    background: var(--paper-soft);
+  }
+}
+.foot-affirm .link:active {
+  color: var(--ink);
+  background: var(--paper-soft);
+}
+
+/* ----- Affirmation overlay ----- */
+.affirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 900ms ease;
+}
+.affirm-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.affirm-content {
+  text-align: center;
+  padding: 2rem clamp(1.5rem, 6vw, 3rem);
+  max-width: 32rem;
+}
+.affirm-line {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin: 0.4em 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 1500ms ease, transform 1500ms ease;
+}
+html[lang^="en"] .affirm-line { letter-spacing: 0.01em; }
+.affirm-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.affirm-line[data-line="0"] { font-weight: 500; }
+.affirm-line[data-line="1"],
+.affirm-line[data-line="2"] {
+  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affirm-overlay,
+  .affirm-line { transition-duration: 200ms; }
+}
 
 /* ----- Leave button (top-left) ----- */
 .leave {

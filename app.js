@@ -18,6 +18,9 @@
       footA: "这里没有数据、没有打卡、没有提醒。",
       footB: "用完关掉就好。",
 
+      affirmTrigger: "说一次给我听",
+      affirmLines: ["你已经够了。", "就此刻这样。", "本来就是。"],
+
       timeNotes: {
         morning:   ["你不必把这一天「过得了不起」。就这样过着，也是一种过法。",
                     "早。今天还没开始替你计分。"],
@@ -200,6 +203,9 @@
 
       footA: "No data, no streaks, no notifications.",
       footB: "Close it when you're done.",
+
+      affirmTrigger: "say it once",
+      affirmLines: ["You are enough.", "Right now.", "As you are."],
 
       timeNotes: {
         morning:   ["You don't have to make today 'remarkable.' You can just live it.",
@@ -732,6 +738,54 @@
       if (slipIdx === -1) showSlip(false);
     }
   }
+
+  // ---------- Affirmation overlay ----------
+
+  let affirmTimers = [];
+  function clearAffirmTimers() {
+    affirmTimers.forEach(clearTimeout);
+    affirmTimers = [];
+  }
+  function showAffirm() {
+    const overlay = document.getElementById("affirm-overlay");
+    if (!overlay) return;
+    const lines = overlay.querySelectorAll(".affirm-line");
+    lines.forEach((el, i) => {
+      el.textContent = (t.affirmLines && t.affirmLines[i]) || "";
+      el.classList.remove("visible");
+    });
+    clearAffirmTimers();
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+    // Stagger the lines so the affirmation lands in three breaths.
+    function reveal(i) {
+      const el = lines[i];
+      if (el) el.classList.add("visible");
+    }
+    affirmTimers.push(setTimeout(() => reveal(0),  500));
+    affirmTimers.push(setTimeout(() => reveal(1), 1700));
+    affirmTimers.push(setTimeout(() => reveal(2), 2900));
+    // Then fade everything back. The user can also tap to dismiss early.
+    affirmTimers.push(setTimeout(() => hideAffirm(), 5400));
+  }
+  function hideAffirm() {
+    const overlay = document.getElementById("affirm-overlay");
+    if (!overlay) return;
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+    clearAffirmTimers();
+  }
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.id === "affirm-trigger") {
+      e.preventDefault();
+      showAffirm();
+      return;
+    }
+    const overlay = document.getElementById("affirm-overlay");
+    if (overlay && overlay.classList.contains("active") && overlay.contains(e.target)) {
+      hideAffirm();
+    }
+  }, true);
 
   // ---------- Boot ----------
   applyLang();

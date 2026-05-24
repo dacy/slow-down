@@ -54,11 +54,13 @@
       </button>
     </nav>
 
-    <p class="quiet small time-note" id="time-note"></p>
-
     <footer class="home-foot">
+      <p class="quiet small time-note" id="time-note"></p>
       <p class="quiet" data-i18n="footA"></p>
       <p class="quiet" data-i18n="footB"></p>
+      <p class="foot-affirm">
+        <button class="link" type="button" id="affirm-trigger" data-i18n="affirmTrigger"></button>
+      </p>
     </footer>
   </section>
 
@@ -141,6 +143,14 @@
     </div>
   </section>
 </main>
+
+<div class="affirm-overlay" id="affirm-overlay" aria-hidden="true">
+  <div class="affirm-content">
+    <p class="affirm-line" data-line="0"></p>
+    <p class="affirm-line" data-line="1"></p>
+    <p class="affirm-line" data-line="2"></p>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>
