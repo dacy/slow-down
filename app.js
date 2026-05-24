@@ -7,7 +7,7 @@
     zh: {
       htmlLang: "zh-CN",
       brand: "慢",
-      tagline: "不是少做一点事，是少被不重要的东西驱动。",
+      tagline: "少做一些，就够了。少做很多，也够。",
 
       sitTitle: "坐一会",      sitSub: "什么都不做。",
       observeTitle: "观察一下", observeSub: "问自己一个问题。",
@@ -203,7 +203,7 @@
     en: {
       htmlLang: "en",
       brand: "slow",
-      tagline: "Not about doing less. About being driven less by what doesn't matter.",
+      tagline: "Doing less is enough. So is doing much less.",
 
       sitTitle: "Sit awhile",   sitSub: "Do nothing.",
       observeTitle: "Notice",   observeSub: "Ask yourself something.",
