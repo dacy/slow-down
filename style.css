@@ -599,7 +599,10 @@ html[lang^="en"] .link { letter-spacing: 0.04em; }
   margin: 0;
   max-width: 28em;
   overflow-wrap: break-word;
-  hyphens: auto;
+  /* Slip texts are short and crafted — let them wrap on word boundaries.
+     Auto-hyphenation breaks words like "reason" into "rea-/son", which
+     then looks visually off-centre next to the seal in the corner. */
+  hyphens: manual;
 }
 html[lang^="en"] .slip-text { letter-spacing: 0.005em; }
 
@@ -694,8 +697,8 @@ html[lang^="en"] .slip-seal::after {
 
 /* ----- Read ----- */
 .passage {
-  font-size: clamp(1.05rem, 4vw, 1.3rem);
-  line-height: 1.95;
+  font-size: clamp(1.1rem, 4.3vw, 1.4rem);
+  line-height: 1.85;
   letter-spacing: 0.04em;
   margin: 0 0 2rem;
   padding: 0 0 0 1.25rem;
@@ -745,8 +748,7 @@ html[lang^="en"] .passage { letter-spacing: 0.005em; }
   /* Standalone secondary text — disclaimers under prompts, etc. */
   .small { font-size: 0.92em; }
 
-  /* Reading content gets a slightly larger minimum on phones. */
-  .passage { font-size: clamp(1.1rem, 4vw, 1.3rem); }
+  /* Reading content uses the same clamp as the slip — see base rules. */
   .scratch { font-size: 17px; }
 
   /* Action links should be tappable and readable. */
