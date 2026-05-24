@@ -186,7 +186,11 @@
         "今天，你可以被人看见你不在状态。这一面，也是你的全貌的一部分。",
         "如果有一天你变老、变慢、跟不上——那也只是另一种活着。提前一点接受。",
         "今天，你可以放过自己的某一个错。它已经过了。",
-        "今天，你不必把自己的人生「讲成一个故事」。它就这样发生着，已经在了。"
+        "今天，你不必把自己的人生「讲成一个故事」。它就这样发生着，已经在了。",
+        "我们大多数人，都是别人眼里的「不够好」。欢迎入伙。",
+        "此刻在地球上，还有许多人正在选择慢下来。你不是一个人在做这件事。",
+        "我们都做过自己后来想撤回的决定。这没什么了不起的，也没什么丢人的。",
+        "我们都不擅长「够了」。可以一起练习。"
       ]
     },
 
@@ -372,7 +376,11 @@
         "Today, you can let someone see you off your game. That side of you is also part of the whole picture.",
         "Someday you will get older, slower, less able to keep up. That, too, is only another way of being alive. You can start letting that be okay early.",
         "Today, you can let yourself off the hook for one mistake. It has already passed.",
-        "Today, you don't have to tell your life as a story. It is happening already, story or no."
+        "Today, you don't have to tell your life as a story. It is happening already, story or no.",
+        "Most of us are 'not enough' in someone's eyes. You're in good company.",
+        "Right now on this planet, many other people are also choosing to slow down. You aren't doing this alone.",
+        "We all make decisions we later wish we could take back. That's not impressive or shameful — just human.",
+        "None of us is very good at 'enough.' We can practice it together."
       ]
     }
   };
@@ -786,6 +794,13 @@
       hideAffirm();
     }
   }, true);
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const overlay = document.getElementById("affirm-overlay");
+    if (overlay && overlay.classList.contains("active")) {
+      hideAffirm();
+    }
+  });
 
   // ---------- Boot ----------
   applyLang();
