@@ -8,7 +8,7 @@ Five practices, in any order, in any amount:
 - **观察一下 / Notice** — a single question for the day, and a scratch space. Nothing is saved. Write what you want, then let it go.
 - **不做 / Not-doing** — a small daily list of things you are choosing not to do. Empties tomorrow.
 - **念几句 / Read a line** — a rotating passage from people who have thought about this for a long time. Zhuangzi, Laozi, Su Shi, Seneca, Marcus Aurelius, Rilke, Hesse, Burkeman, Pico Iyer, others.
-- **够了 / It's enough** — a permission slip, plainly written. _"Today, you don't have to be the strongest, fastest, busiest one. No one was handing out medals."_ Fifty of them, per language.
+- **够了 / It's enough** — a permission slip, plainly written. _"Today, you don't have to be the strongest, fastest, busiest one. No one was handing out medals."_ Several dozen of them, per language.
 
 There is also a quiet "say it once" link in the home footer, for when even the longer practices feel like too much. Pressing it fades everything away and shows, in three breaths:
 

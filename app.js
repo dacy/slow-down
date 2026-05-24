@@ -190,7 +190,13 @@
         "我们大多数人，都是别人眼里的「不够好」。欢迎入伙。",
         "此刻在地球上，还有许多人正在选择慢下来。你不是一个人在做这件事。",
         "我们都做过自己后来想撤回的决定。这没什么了不起的，也没什么丢人的。",
-        "我们都不擅长「够了」。可以一起练习。"
+        "我们都不擅长「够了」。可以一起练习。",
+        "今天，你可以让别人看见你的「慢」。被看见慢，比假装快，让人累得少。",
+        "今天，你可以是聚会里那个「最近没什么进展」的人。那也是一种存在的方式。",
+        "今天，你可以接受：有的人确实会觉得你「不够」。他们的觉得，是他们要扛的，不是你要扛的。",
+        "今天，你可以不去解释你为什么慢。解释，常常是给一个根本不在场的法官。",
+        "今天，你可以放过自己。不是因为你今天做得好——而是因为「做得好」，从来不是你存在的入场券。你已经在了。",
+        "今天，你可以承认：你曾经追的那个标准，是别人随手画的一条线。它从来没有过你的签名。"
       ]
     },
 
@@ -380,7 +386,13 @@
         "Most of us are 'not enough' in someone's eyes. You're in good company.",
         "Right now on this planet, many other people are also choosing to slow down. You aren't doing this alone.",
         "We all make decisions we later wish we could take back. That's not impressive or shameful — just human.",
-        "None of us is very good at 'enough.' We can practice it together."
+        "None of us is very good at 'enough.' We can practice it together.",
+        "Today, you can let people see you being slow. Being seen slow is less tiring than faking fast.",
+        "Today, you can be the one at the gathering who 'hasn't been up to much lately.' That's also a way of being there.",
+        "Today, you can accept that some people will indeed find you 'not enough.' Their finding is theirs to carry — not yours.",
+        "Today, you don't have to explain why you're slow. Explanation is usually a defence in front of a judge who isn't even in the room.",
+        "Today, you can let yourself off the hook. Not because today went well — but because 'going well' was never the price of admission for your existing. You're already in.",
+        "Today, you can admit: the standard you've been chasing was a line someone else casually drew. Your name is not on it."
       ]
     }
   };
