@@ -448,6 +448,20 @@ html[lang^="en"] .prompt { letter-spacing: 0.005em; }
   pointer-events: none;
 }
 
+/* 'let it go' is hidden until the scratch has something to release. */
+#let-go {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2px);
+  transition: opacity 500ms ease, transform 500ms ease, visibility 0s linear 500ms;
+}
+#let-go.has-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 500ms ease, transform 500ms ease, visibility 0s;
+}
+
 .observe-actions, .read-actions {
   display: flex;
   gap: clamp(1rem, 4vw, 2rem);

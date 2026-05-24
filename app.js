@@ -582,16 +582,25 @@
   }
   function setupObserve() {
     document.getElementById("another-prompt").onclick = () => loadPrompt(true);
-    document.getElementById("let-go").onclick = letGo;
+    const letGoBtn = document.getElementById("let-go");
+    letGoBtn.onclick = letGo;
     // Reset scratch on entry — content is never saved.
     const ta = document.getElementById("scratch");
     ta.value = "";
     ta.classList.remove("releasing");
+    letGoBtn.classList.remove("has-content");
+    // Show 'let it go' only when there's something to release. Keeps the
+    // action row quiet when the user is just looking at the question.
+    ta.oninput = () => {
+      letGoBtn.classList.toggle("has-content", !!ta.value.trim());
+    };
   }
   function letGo() {
     const ta = document.getElementById("scratch");
     if (!ta.value.trim()) return;
     ta.classList.add("releasing");
+    const btn = document.getElementById("let-go");
+    if (btn) btn.classList.remove("has-content");
     // After the drift-down completes, quietly clear and restore the textarea
     // so the user can write something else.
     setTimeout(() => {
