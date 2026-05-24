@@ -86,7 +86,10 @@
         "你最近一次因为别人比你「更好」而难受，是为了证明给谁看？",
         "那个让你觉得自己「不够」的人，他自己「够」了吗？",
         "你最近一次被「忽视」，是不是其实就是一段没人盯着你的安静？",
-        "如果今天没有人比较、没有人评分，你会先去做什么？"
+        "如果今天没有人比较、没有人评分，你会先去做什么？",
+        "此刻你心里那个最不愿被看见的感受，叫什么名字？",
+        "你今天有没有为「别人在前进」而难受？那个难受，是你的——还是它跟着别人一起来的？",
+        "如果你允许自己今天「不够好」，会发生什么？真的会发生什么吗？"
       ],
 
       passages: [
@@ -117,7 +120,9 @@
         { tag: "庄子", text: "鹪鹩巢于深林，不过一枝；偃鼠饮河，不过满腹。所谓「够」，自古就没有很大。" },
         { tag: "庄子", text: "井蛙不可以语于海。但井蛙的井，对它来说，也是它的整个世界。每个人的「够」，原本就不一样。" },
         { tag: "禅家语", text: "比较是一切痛苦的开始。山不和山比高，海不和海比深。它们只是各自地，是它们自己。" },
-        { tag: "本居宣长", text: "「物の哀れ」——能为一片落叶动心的人，并不比那些「成就大业」的人少活了什么。" }
+        { tag: "本居宣长", text: "「物の哀れ」——能为一片落叶动心的人，并不比那些「成就大业」的人少活了什么。" },
+        { tag: "佛家语", text: "嫉妒来了，不必赶它走——只用看着它，知道它叫嫉妒。能被认出来的烦恼，已经少了一半。" },
+        { tag: "费曼", text: "学会不在意别人怎么看你，这件事释放出来的力气，远比你以为的多。" }
       ],
 
       slips: [
@@ -151,7 +156,16 @@
         "今天，你可以让那条没回的消息再等等。没人会因此少一寸生命。",
         "今天，你可以不优秀。优秀，也是一种忙。",
         "在某个角落不被知道，也是一种好好活着的方式。",
-        "今天，你可以放心地，被这个世界遗忘几个小时。"
+        "今天，你可以放心地，被这个世界遗忘几个小时。",
+        "今天，你可以是错的——关于自己，关于过去做过的某个判断。",
+        "今天，你可以放下一件你已经扛了很久的事。放下，是把手腾出来。",
+        "今天，你可以做一个初学者。所有的本事先放在一旁。",
+        "今天，你可以软一点。这个世界不缺再多一个变硬的人。",
+        "今天，你可以承认你嫉妒——并且不必拿它去做什么。",
+        "今天，你可以不在乎自己的「形象」。形象是给别人看的，今天不开门。",
+        "今天，你可以「无所成就」。今天本来就不是为了被记住的。",
+        "今天，你可以反悔。昨天答应自己的话，今天可以重新看一遍。",
+        "今天，你可以「不够」——并且就这样过完这一天，也没事。"
       ]
     },
 
@@ -237,7 +251,10 @@
         "When you most recently felt small because someone else was 'doing better,' who were you trying to prove yourself to?",
         "That person whose life makes you feel inadequate — do they feel adequate?",
         "That recent moment when you felt 'ignored' — what if it was just a stretch of quiet when no one was watching you?",
-        "If no one were comparing or scoring today, what would you do first?"
+        "If no one were comparing or scoring today, what would you do first?",
+        "The feeling you most don't want anyone to see right now — what is its name?",
+        "Did you feel something today because 'someone else is moving forward'? Is that feeling yours, or did it come in with them?",
+        "If you let yourself be 'not good enough' today, what would actually happen? Would anything?"
       ],
 
       passages: [
@@ -268,7 +285,9 @@
         { tag: "Zhuangzi",        text: "The wren in the deepest woods needs only a single branch. The mole drinking at the river drinks only its fill. 'Enough' has never been very large." },
         { tag: "Zhuangzi",        text: "You can't tell a frog in a well about the sea — it is bound by its space. But to the frog, its well is its whole world. What is 'enough' was never meant to be the same for everyone." },
         { tag: "Zen saying",      text: "Comparison is where all suffering begins. Mountains do not compete with mountains for height. Seas do not compete with seas for depth. They simply, each in their own place, are what they are." },
-        { tag: "Motoori Norinaga", text: "Mono no aware — the one who can be moved by a falling leaf has not lived any less than the one who 'accomplished great things.'" }
+        { tag: "Motoori Norinaga", text: "Mono no aware — the one who can be moved by a falling leaf has not lived any less than the one who 'accomplished great things.'" },
+        { tag: "Buddhist saying",  text: "When envy arrives, you don't have to send it away. Just see it, and know it by name. A trouble that can be recognized is already half its size." },
+        { tag: "Feynman",          text: "Learning not to care what other people think of you releases more energy than you'd believe." }
       ],
 
       slips: [
@@ -302,7 +321,16 @@
         "Today, that unanswered message can keep waiting. No one loses an hour of life because of it.",
         "Today, you don't have to be excellent. Excellence is also a kind of busyness.",
         "Being unknown in some quiet corner is also a way of living a good life.",
-        "Today, you can let the world forget about you for a few hours. It's allowed."
+        "Today, you can let the world forget about you for a few hours. It's allowed.",
+        "Today, you can be wrong — about yourself, about some judgment you made long ago.",
+        "Today, you can put down one thing you've been carrying too long. Putting it down is freeing your hands, not failing.",
+        "Today, you can be a beginner. Let the old skills sit somewhere else for an afternoon.",
+        "Today, you can be soft. The world is not short on hardened people.",
+        "Today, you can admit you are envious — and not do anything with it.",
+        "Today, you can stop curating your 'image.' Image is for others. The door is closed today.",
+        "Today, you can have 'accomplished nothing.' Today wasn't meant to be remembered.",
+        "Today, you can change your mind. What you promised yourself yesterday can be looked at again.",
+        "Today, you can be 'not enough' — and live the whole day like that, and it will still have been a day."
       ]
     }
   };
@@ -571,6 +599,7 @@
   // ---------- Enough (permission slips) ----------
 
   let slipIdx = -1;
+  let slipSettleTimer = null;
   // Slight per-slip rotation gives the cards a hand-placed feel rather than
   // a stamped-out-of-a-template feel. Eight values, picked deterministically
   // by slip index.
@@ -592,11 +621,20 @@
     // Re-trigger the settling animation by toggling the class off and on.
     slip.classList.remove("settled");
     slip.classList.add("fading");
+    // Hold the action buttons at a softer opacity while the slip is arriving,
+    // so the user feels invited to read it rather than reach immediately for
+    // "another".
+    const actions = document.querySelector(".enough-actions");
+    if (actions) actions.classList.add("settling");
+    if (slipSettleTimer) clearTimeout(slipSettleTimer);
     setTimeout(() => {
       text.textContent = list[slipIdx];
       slip.classList.remove("fading");
       slip.classList.add("settled");
     }, 500);
+    slipSettleTimer = setTimeout(() => {
+      if (actions) actions.classList.remove("settling");
+    }, 2800);
   }
   function setupEnough() {
     document.getElementById("enough-next").onclick = () => showSlip(true);

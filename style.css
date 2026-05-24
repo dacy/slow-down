@@ -564,7 +564,11 @@ html[lang^="en"] .slip-seal::after {
   justify-content: flex-end;
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
+  transition: opacity 1400ms ease;
 }
+/* While the slip is arriving, soften the action links so the eye stays on
+   the slip itself for a few breaths. They remain clickable. */
+.enough-actions.settling { opacity: 0.45; }
 .enough-note {
   margin-top: 0.25rem;
 }
