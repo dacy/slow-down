@@ -18,6 +18,17 @@
       footA: "这里没有数据、没有打卡、没有提醒。",
       footB: "用完关掉就好。",
 
+      timeNotes: {
+        morning:   ["你不必把这一天「过得了不起」。就这样过着，也是一种过法。",
+                    "早。今天还没开始替你计分。"],
+        afternoon: ["外面那些你在追的东西，可以让它们自己跑一会儿。",
+                    "下午了。你不必每一刻都在「往前」。"],
+        evening:   ["今天没做完的事，明天还在那里。不必带着它去睡觉。",
+                    "可以慢慢落下来了。你做得已经够。"],
+        night:     ["夜里了。睡觉是一个真实的选项。",
+                    "这么晚还醒着，可以原谅自己一下。"]
+      },
+
       leaveLabel: "返回",
 
       sitHint: "跟着圆呼吸。",
@@ -182,6 +193,17 @@
 
       footA: "No data, no streaks, no notifications.",
       footB: "Close it when you're done.",
+
+      timeNotes: {
+        morning:   ["You don't have to make today 'remarkable.' You can just live it.",
+                    "Morning. The day isn't keeping score on you yet."],
+        afternoon: ["Whatever you've been chasing — let it run on without you for a while.",
+                    "It's afternoon. You don't have to be 'moving forward' every minute."],
+        evening:   ["Whatever you didn't finish today, it will still be there tomorrow.",
+                    "You can let yourself come down now. You've done enough."],
+        night:     ["It's late. Bed is a real option.",
+                    "Up this late, you can probably let yourself off the hook."]
+      },
 
       leaveLabel: "leave",
 
@@ -364,6 +386,24 @@
     onEnter(currentView);
   }
 
+  function pickTimeNote() {
+    const hour = new Date().getHours();
+    let phase;
+    if (hour >= 22 || hour < 5) phase = "night";
+    else if (hour < 11)         phase = "morning";
+    else if (hour < 17)         phase = "afternoon";
+    else                        phase = "evening";
+    const list = t.timeNotes[phase];
+    // Two variants per phase; pick deterministically per day so revisits in
+    // the same window are stable, but a different day surfaces the other.
+    return list[hashOfDay() % list.length];
+  }
+  function applyTimeNote() {
+    const el = document.getElementById("time-note");
+    if (!el) return;
+    el.textContent = pickTimeNote();
+  }
+
   function applyLang() {
     document.documentElement.lang = t.htmlLang;
 
@@ -371,6 +411,7 @@
       const k = el.dataset.i18n;
       if (t[k] != null) el.textContent = t[k];
     });
+    applyTimeNote();
 
     // Inputs / textareas
     const scratch = document.getElementById("scratch");
